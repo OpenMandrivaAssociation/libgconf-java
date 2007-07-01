@@ -1,23 +1,21 @@
 Summary:        Java bindings for GConf
 Name:           libgconf-java
 Version:        2.12.6
-Release:        %mkrel 1
+Release:        %mkrel 2
 Epoch:          0
 License:        LGPL
-Group:          Development/Java
+Group:          System/Libraries
 URL:            http://java-gnome.sourceforge.net/
 Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgconf-java/2.12/libgconf-java-%{version}.tar.bz2
 Source1:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgconf-java/2.12/libgconf-java-2.12.6.changes
 Source2:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgconf-java/2.12/libgconf-java-2.12.6.md5sum
 Source3:        libgconf-java-2.12.6.news
 Source4:        java-gnome-macros.tar.bz2
-Requires:       GConf2 >= 0:2.16.0
-Requires:       libgtk-java
 BuildRequires:  libGConf2-devel >= 0:2.16.0
-BuildRequires:  gcc-java >= 0:4.1.1
+BuildRequires:  java-gcj-compat-devel
 BuildRequires:  jpackage-utils
 BuildRequires:  java-devel >= 0:1.4.2
-BuildRequires:  libgtk-java >= 0:2.10.2
+BuildRequires:  libgtk-java-devel >= 0:2.10.2
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-root
 
@@ -26,13 +24,13 @@ libgconf-java is a language binding that allows developers to use the
 GConf APIs from Java applications.  It is part of Java-GNOME.
 
 %package        devel
-Summary:        Compressed Java source files for %{name}
+Summary:        Development files for %{name}
 Group:          Development/Java
 Requires:       %{name} = %{epoch}:%{version}-%{release}
+Conflicts:      libgconf-java < 2.12.6-2
 
 %description    devel
-Compressed Java source for %{name}. This is useful if you are developing
-applications with IDEs like Eclipse.
+Development files for %{name}.
 
 %prep
 %setup -q
@@ -48,6 +46,8 @@ export JAVA=%{java}
 export JAVAC=%{javac}
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
+export GCJ=%{gcj}
+export CPPFLAGS="-I%{java_home}/include -I%{java_home}/include/linux"
 %{configure2_5x} --with-jardir=%{_javadir}
 %{make}
 
@@ -81,14 +81,16 @@ popd
 
 %files
 %defattr(-,root,root)
-%doc doc/api AUTHORS COPYING doc/examples NEWS README
-%{_libdir}/*so*
-%{_libdir}/*la
-%{_libdir}/pkgconfig/*
+%doc AUTHORS COPYING NEWS README
+%{_libdir}/libgconfjava-*.so
+%{_libdir}/libgconfjni-*.so
 %{_javadir}/*.jar
 
 %files devel
 %defattr(-,root,root)
+%doc doc/api doc/examples
 %{_javadir}/*.zip
-
-
+%{_libdir}/*la
+%{_libdir}/libgconfjava.so
+%{_libdir}/libgconfjni.so
+%{_libdir}/pkgconfig/*
