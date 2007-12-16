@@ -1,7 +1,7 @@
 Summary:        Java bindings for GConf
 Name:           libgconf-java
 Version:        2.12.6
-Release:        %mkrel 2
+Release:        %mkrel 3
 Epoch:          0
 License:        LGPL
 Group:          System/Libraries
@@ -13,7 +13,7 @@ Source3:        libgconf-java-2.12.6.news
 Source4:        java-gnome-macros.tar.bz2
 BuildRequires:  libGConf2-devel >= 0:2.16.0
 BuildRequires:  java-gcj-compat-devel
-BuildRequires:  jpackage-utils
+BuildRequires:  java-rpmbuild
 BuildRequires:  java-devel >= 0:1.4.2
 BuildRequires:  libgtk-java-devel >= 0:2.10.2
 BuildRequires:  pkgconfig
