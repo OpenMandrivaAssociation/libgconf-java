@@ -17,6 +17,7 @@ BuildRequires:  java-rpmbuild
 BuildRequires:  java-devel >= 0:1.4.2
 BuildRequires:  libgtk-java-devel >= 0:2.10.2
 BuildRequires:  pkgconfig
+BuildRoot:      %{_tmppath}/%{name}-%{version}-root
 
 %description
 libgconf-java is a language binding that allows developers to use the
