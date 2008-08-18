@@ -1,9 +1,9 @@
 Summary:        Java bindings for GConf
 Name:           libgconf-java
 Version:        2.12.6
-Release:        %mkrel 5
+Release:        %mkrel 6
 Epoch:          0
-License:        LGPL
+License:        LGPLv2
 Group:          System/Libraries
 URL:            http://java-gnome.sourceforge.net/
 Source0:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgconf-java/2.12/libgconf-java-%{version}.tar.bz2
