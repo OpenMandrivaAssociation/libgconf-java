@@ -1,7 +1,9 @@
+%define _disable_ld_no_undefined 1
+
 Summary:        Java bindings for GConf
 Name:           libgconf-java
 Version:        2.12.6
-Release:        %mkrel 6
+Release:        %mkrel 6.0.1
 Epoch:          0
 License:        LGPLv2
 Group:          System/Libraries
@@ -44,6 +46,7 @@ Development files for %{name}.
 export CLASSPATH=
 export JAVA=%{java}
 export JAVAC=%{javac}
+export JAVAH=%{_jvmdir}/java-rpmbuild/bin/javah
 export JAR=%{jar}
 export JAVADOC=%{javadoc}
 export GCJ=%{gcj}
