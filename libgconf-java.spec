@@ -3,7 +3,7 @@
 Summary:        Java bindings for GConf
 Name:           libgconf-java
 Version:        2.12.6
-Release:        %mkrel 6.0.2
+Release:        %mkrel 6.0.3
 Epoch:          0
 License:        LGPLv2
 Group:          System/Libraries
