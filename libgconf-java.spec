@@ -94,7 +94,7 @@ popd
 
 %files devel
 %defattr(-,root,root)
-%doc doc/api doc/examples
+%doc %{_docdir}/%{name}-%{version}
 %{_javadir}/*.zip
 %{_libdir}/*la
 %{_libdir}/libgconfjava.so
