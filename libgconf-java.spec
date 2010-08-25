@@ -1,9 +1,7 @@
-%define _disable_ld_no_undefined 1
-
 Summary:        Java bindings for GConf
 Name:           libgconf-java
 Version:        2.12.6
-Release:        %mkrel 6.0.3
+Release:        %mkrel 6.0.4
 Epoch:          0
 License:        LGPLv2
 Group:          System/Libraries
@@ -13,6 +11,7 @@ Source1:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgconf-java/2.1
 Source2:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgconf-java/2.12/libgconf-java-2.12.6.md5sum
 Source3:        libgconf-java-2.12.6.news
 Source4:        java-gnome-macros.tar.bz2
+Patch0:		libgconf-java-2.12.6-linkage.patch
 BuildRequires:  libGConf2-devel >= 0:2.16.0
 BuildRequires:  java-gcj-compat-devel
 BuildRequires:  java-rpmbuild
@@ -37,6 +36,7 @@ Development files for %{name}.
 %prep
 %setup -q
 %setup -q -T -D -a 4
+%patch0 -p0
 
 %build
 export CLASSPATH=
