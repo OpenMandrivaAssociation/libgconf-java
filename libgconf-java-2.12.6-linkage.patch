@@ -1,0 +1,52 @@
+--- Makefile.am.link	2010-08-26 01:35:30.000000000 +0200
++++ Makefile.am	2010-08-26 01:36:34.000000000 +0200
+@@ -42,12 +42,14 @@
+ if BUILD_GCJ
+ libgconfjava_la_SOURCES = $(java_gconf_source_files)
+ libgconfjava_la_GCJFLAGS = -fjni -I$(srcdir)/src/java -Isrc/java --classpath=$(CLASSPATH):$(srcdir)/src/java
+-libgconfjava_la_LDFLAGS = $(JGJAVA_LIBS) $(GTKJAVA_LIBS) -release $(apiversion)
++libgconfjava_la_LDFLAGS = -release $(apiversion)
++libgconfjava_la_LIBADD = $(JGJAVA_LIBS) $(GTKJAVA_LIBS)
+ endif
+ 
+ libgconfjni_la_SOURCES = $(jni_gconf_source_files)
+ AM_CFLAGS = $(GCONF_CFLAGS) $(JGJAVA_CFLAGS) $(GTKJAVA_CFLAGS) $(JNI_INCLUDES) -I$(includedir)
+-libgconfjni_la_LDFLAGS = $(GCONF_LIBS) $(JGJNI_LIBS) $(GTKJNI_LIBS) -release $(apiversion)
++libgconfjni_la_LDFLAGS = -release $(apiversion)
++libgconfjni_la_LIBADD = $(GCONF_LIBS) $(JGJNI_LIBS) $(GTKJNI_LIBS) $(GLIB_JAVA_LIBS)
+ 
+ # automake should support generating versioned jars
+ gconf_jardir = $(jardir)
+--- Makefile.in.link	2010-08-26 01:37:31.000000000 +0200
++++ Makefile.in	2010-08-26 01:38:55.000000000 +0200
+@@ -70,7 +70,6 @@
+ 	"$(DESTDIR)$(pkgconfigdir)"
+ libLTLIBRARIES_INSTALL = $(INSTALL)
+ LTLIBRARIES = $(lib_LTLIBRARIES)
+-libgconfjava_la_LIBADD =
+ am__libgconfjava_la_SOURCES_DIST = src/java/org/gnu/gconf/Config.java \
+ 	src/java/org/gnu/gconf/ConfClient.java \
+ 	src/java/org/gnu/gconf/ConfClientListener.java \
+@@ -95,7 +94,6 @@
+ @BUILD_GCJ_TRUE@am_libgconfjava_la_OBJECTS = $(am__objects_1)
+ libgconfjava_la_OBJECTS = $(am_libgconfjava_la_OBJECTS)
+ @BUILD_GCJ_TRUE@am_libgconfjava_la_rpath = -rpath $(libdir)
+-libgconfjni_la_LIBADD =
+ am__objects_2 = src/jni/org_gnu_gconf_ConfMetaInfo.lo \
+ 	src/jni/org_gnu_gconf_ConfSchema.lo \
+ 	src/jni/org_gnu_gconf_ConfEntry.lo \
+@@ -352,10 +350,12 @@
+ 
+ @BUILD_GCJ_TRUE@libgconfjava_la_SOURCES = $(java_gconf_source_files)
+ @BUILD_GCJ_TRUE@libgconfjava_la_GCJFLAGS = -fjni -I$(srcdir)/src/java -Isrc/java --classpath=$(CLASSPATH):$(srcdir)/src/java
+-@BUILD_GCJ_TRUE@libgconfjava_la_LDFLAGS = $(JGJAVA_LIBS) $(GTKJAVA_LIBS) -release $(apiversion)
++@BUILD_GCJ_TRUE@libgconfjava_la_LDFLAGS = -release $(apiversion)
++@BUILD_GCJ_TRUE@libgconfjava_la_LIBADD = $(JGJAVA_LIBS) $(GTKJAVA_LIBS) 
+ libgconfjni_la_SOURCES = $(jni_gconf_source_files)
+ AM_CFLAGS = $(GCONF_CFLAGS) $(JGJAVA_CFLAGS) $(GTKJAVA_CFLAGS) $(JNI_INCLUDES) -I$(includedir)
+-libgconfjni_la_LDFLAGS = $(GCONF_LIBS) $(JGJNI_LIBS) $(GTKJNI_LIBS) -release $(apiversion)
++libgconfjni_la_LDFLAGS = -release $(apiversion)
++libgconfjni_la_LIBADD = $(GCONF_LIBS) $(JGJNI_LIBS) $(GTKJNI_LIBS) $(GLIB_JAVA_LIBS)
+ 
+ # automake should support generating versioned jars
+ gconf_jardir = $(jardir)
