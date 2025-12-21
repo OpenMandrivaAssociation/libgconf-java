@@ -12,6 +12,7 @@ Source2:        http://fr2.rpmfind.net/linux/gnome.org/sources/libgconf-java/2.1
 Source3:        libgconf-java-2.12.6.news
 Source4:        java-gnome-macros.tar.bz2
 Patch0:		libgconf-java-2.12.6-linkage.patch
+BuildRequires:	make
 BuildRequires:  libGConf2-devel >= 0:2.16.0
 BuildRequires:  java-gcj-compat-devel
 BuildRequires:  java-rpmbuild
